@@ -6,5 +6,6 @@ angular.module("nasa",
 		
 		// include common modules 
 		"ngcFilters",
-		"ngcDataProcessing"
+		"ngcDataProcessing",
+		"ngcWidgetServices"
 	]);

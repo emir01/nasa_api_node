@@ -1,9 +1,14 @@
 angular.module("nasa")
-	.controller("StarsController", function($scope, $log, starsService, ngcDataProcessingArrays){
+	.controller("StarsController", function($scope, $log, 
+		starsService, 
+		ngcDataProcessingArrays,
+		rangeSliderWidgetService)
+	{
+		
 		/*
 			Properties
 		*/
-		
+				
 		// main data
 		$scope.stars = [];
 		
@@ -13,16 +18,9 @@ angular.module("nasa")
 			id: "",
 		};
 		
-		$scope.min = -10;
-		$scope.max = 10;
+		$scope.lumSliderOptions = rangeSliderWidgetService.getRangeSliderOptions("lum");
 		
-		$scope.options = {       
-		  from: -5000,
-		  to: 5000,
-		  step: 1,
-		  dimension: " lum",
-  		  limits:false
-	  	};
+		$scope.magSliderOptions = rangeSliderWidgetService.getRangeSliderOptions("appmag");
 		
 		/*
 			Event Handlers
@@ -36,15 +34,15 @@ angular.module("nasa")
 		function setRangeFilterOptions(){
 			var data = $scope.stars;
 			
-			var minMax = ngcDataProcessingArrays.getMinMaxForProp(data,"lum");
+			var lumMinMax = ngcDataProcessingArrays.getMinMaxForProp(data, "lum");
+			var appMagMinMax = ngcDataProcessingArrays.getMinMaxForProp(data, "appmag");
 			
-			$scope.options.from = minMax.min - 100;
-			$scope.options.to = minMax.max + 100;
+			$scope.lumSliderOptions.setMin(lumMinMax.min - 1);
+			$scope.lumSliderOptions.setMax(lumMinMax.max + 1);
 			
-			// set values for the new slider
-			$scope.min = $scope.options.from;
-			$scope.max = $scope.options.to;
-		}
+			$scope.magSliderOptions.setMin(appMagMinMax.min - 1);
+			$scope.magSliderOptions.setMax(appMagMinMax.max + 1);
+		};
 		
 		// init the stars
 		starsService.get().then(function(data){

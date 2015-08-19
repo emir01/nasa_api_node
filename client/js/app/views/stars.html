@@ -19,7 +19,12 @@
                 
                 <div class="form-group">
                     <label>Luminosity</label>
-                    <value-slider-range opts="options" id="lum_slider" min="min" max="max"></value-slider-range>
+                    <value-slider-range opts="lumSliderOptions" id="lum_slider" min="lumSliderOptions.min" max="lumSliderOptions.max"></value-slider-range>
+                </div>
+                
+                <div class="form-group">
+                    <label>Apparent Magnitude</label>
+                    <value-slider-range opts="magSliderOptions" id="mag_slider" min="magSliderOptions.min" max="magSliderOptions.max"></value-slider-range>
                 </div>
                 
                 <div class="form-group text-center">
@@ -31,7 +36,8 @@
     <!--The column with the results-->
     <div class="col-xs-8">
         <h3>Results ({{filtered.length}}):</h3>
-        <div class="star" data-ng-repeat="star in filtered = ( stars | orderBy: '-lum' | filter:searchParams | rangeFilter:{start:min, end:max, prop:'lum'})">
+        <div class="star" 
+            data-ng-repeat="star in filtered = ( stars | orderBy: '-lum' | filter:searchParams | rangeFilter:{start:lumSliderOptions.min, end:lumSliderOptions.max, prop:'lum'} | rangeFilter:{start:magSliderOptions.min, end:magSliderOptions.max, prop:'appmag'})">
             <div class="id attr">{{star.id}}</div>
             <div class="name attr">Name: <span>{{star.label}} </span></div>
             <div class="lum attr">Luminosity: {{star.lum}}</div>
