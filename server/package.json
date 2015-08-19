@@ -1,0 +1,19 @@
+{
+  "name": "node_app",
+  "version": "1.0.0",
+  "description": "Sample NASA Stars API Node Proxy",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.13.1",
+    "cors": "^2.7.1",
+    "connect": "^3.4.0",
+    "express": "^4.13.0",
+    "request": "^2.58.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Emir Osmanoski",
+  "license": "ISC"
+}

@@ -1,0 +1,45 @@
+<div id="stars-header" class="row">
+        <h1> API</h1>
+</div>
+
+<div class="row">
+    <!-- The column with the filters-->
+    <div class="col-xs-4">
+        <h3>Filters:</h3>
+        <form>
+                <div class="form-group">
+                    <label>Label</label>
+                    <input type="text" data-ng-model="searchParams.label" class="form-control" id="search-label" placeholder="Search by Label">
+                </div>
+                  
+                 <div class="form-group">
+                     <label>Id</label>
+                    <input type="text" data-ng-model="searchParams.id" class="form-control" id="search-id" placeholder="Search by Id">
+                 </div>
+                
+                <div class="form-group">
+                    <label>Luminosity</label>
+                    <value-slider-range opts="options" id="lum_slider" min="min" max="max"></value-slider-range>
+                </div>
+                
+                <div class="form-group text-center">
+                    <button class="btn btn-danger" data-ng-click="clearSearch()">Clear</button>
+                </div>
+        </form>
+    </div>
+        
+    <!--The column with the results-->
+    <div class="col-xs-8">
+        <h3>Results ({{filtered.length}}):</h3>
+        <div class="star" data-ng-repeat="star in filtered = ( stars | orderBy: '-lum' | filter:searchParams | rangeFilter:{start:min, end:max, prop:'lum'})">
+            <div class="id attr">{{star.id}}</div>
+            <div class="name attr">Name: <span>{{star.label}} </span></div>
+            <div class="lum attr">Luminosity: {{star.lum}}</div>
+            <div class="lum attr">Apparent Magnitude: {{star.appmag}}</div>
+        </div>
+    </div>
+</div>
+
+
+
+    
