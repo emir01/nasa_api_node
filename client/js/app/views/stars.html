@@ -9,26 +9,26 @@
         <form>
                 <div class="form-group">
                     <label>Label</label>
-                    <input type="text" data-ng-model="searchParams.label" class="form-control" id="search-label" placeholder="Search by Label">
+                    <input type="text" data-ng-model="vm.searchParams.label" class="form-control" id="search-label" placeholder="Search by Label">
                 </div>
                   
                  <div class="form-group">
                      <label>Id</label>
-                    <input type="text" data-ng-model="searchParams.id" class="form-control" id="search-id" placeholder="Search by Id">
+                    <input type="text" data-ng-model="vm.searchParams.id" class="form-control" id="search-id" placeholder="Search by Id">
                  </div>
                 
                 <div class="form-group">
                     <label>Luminosity</label>
-                    <value-slider-range opts="lumSliderOptions" id="lum_slider" min="lumSliderOptions.min" max="lumSliderOptions.max"></value-slider-range>
+                    <value-slider-range opts="vm.lumSliderOptions" id="lum_slider" min="vm.lumSliderOptions.min" max="vm.lumSliderOptions.max"></value-slider-range>
                 </div>
                 
                 <div class="form-group">
                     <label>Apparent Magnitude</label>
-                    <value-slider-range opts="magSliderOptions" id="mag_slider" min="magSliderOptions.min" max="magSliderOptions.max"></value-slider-range>
+                    <value-slider-range opts="vm.magSliderOptions" id="mag_slider" min="vm.magSliderOptions.min" max="vm.magSliderOptions.max"></value-slider-range>
                 </div>
                 
                 <div class="form-group text-center">
-                    <button class="btn btn-danger" data-ng-click="clearSearch()">Clear</button>
+                    <button class="btn btn-danger" data-ng-click="vm.clearSearch()">Clear</button>
                 </div>
         </form>
     </div>
@@ -37,7 +37,7 @@
     <div class="col-xs-8">
         <h3>Results ({{filtered.length}}):</h3>
         <div class="star" 
-            data-ng-repeat="star in filtered = ( stars | orderBy: '-lum' | filter:searchParams | rangeFilter:{start:lumSliderOptions.min, end:lumSliderOptions.max, prop:'lum'} | rangeFilter:{start:magSliderOptions.min, end:magSliderOptions.max, prop:'appmag'})">
+            data-ng-repeat="star in filtered = ( vm.stars | orderBy: '-lum' | filter:searchParams | rangeFilter:{start:vm.lumSliderOptions.min, end:vm.lumSliderOptions.max, prop:'lum'} | rangeFilter:{start:vm.magSliderOptions.min, end:vm.magSliderOptions.max, prop:'appmag'})">
             <div class="id attr">{{star.id}}</div>
             <div class="name attr">Name: <span>{{star.label}} </span></div>
             <div class="lum attr">Luminosity: {{star.lum}}</div>

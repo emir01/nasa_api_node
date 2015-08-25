@@ -1,11 +1,13 @@
-angular.module("nasa", 
-	[
-		"ngRoute",
-		"ngResource",
-		"angularAwesomeSlider",
-		
-		// include common modules 
-		"ngcFilters",
-		"ngcDataProcessing",
-		"ngcWidgetServices"
-	]);
+angular
+	.module("nasa", 
+		[
+			"ngRoute",
+			"ngResource",
+			"angularAwesomeSlider",
+			
+			// include common modules 
+			"ngcFilters",
+			"ngcDataProcessing",
+			"ngcWidgetServices"
+		]
+	);
