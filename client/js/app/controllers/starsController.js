@@ -1,12 +1,12 @@
-(function(){
-	'use strict';
+(function() {
+	"use strict";
 	
 	angular.module("nasa")
 		.controller("StarsController", StarsController);
 		
-	StarsController.$inject = ["$log", "starsService", "ngcDataProcessingArrays", "rangeSliderWidgetService"];
+	StarsController.$inject = ["$log", "starsDataService", "ngcDataProcessingArrays", "rangeSliderWidgetService"];
 	
-    function StarsController($log, starsService, ngcDataProcessingArrays, rangeSliderWidgetService)
+    function StarsController($log, starsDataService, ngcDataProcessingArrays, rangeSliderWidgetService)
 	{
 		var vm = this;
 		
@@ -26,9 +26,16 @@
 		}
 		
 		function activate(){
-			starsService.get().then(function(data){
-				vm.stars = data;
+			return getStars().then(function(){
 				setRangeFilterOptions();
+				$log.info("activated stars view");
+			});
+		}
+		
+		function getStars(){
+			return starsDataService.get().then(function(data){
+				vm.stars = data;
+				return vm.stars;
 			});
 		}
 		
@@ -44,7 +51,6 @@
 			// todo: possibly move to service
 			vm.magSliderOptions.setMin(appMagMinMax.min - 1);
 			vm.magSliderOptions.setMax(appMagMinMax.max + 1);
-		};
-		
-	};
+		}
+	}
 })();

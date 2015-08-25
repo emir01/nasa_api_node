@@ -1,26 +1,26 @@
-/*
-	Define a range slider
-*/
-
-angular.module('nasa').directive(
-	"valueSliderRange", 
-	function () {
-        return {
+(function(){
+    "use strict";
+    
+    angular
+        .module("nasa")
+        .directive("valueSliderRange", valueSliderRange);
+        
+        function valueSliderRange(){
+            var directive = {
+                scope:{
+                    id: "@",
+                    opts: "=",
+                    min: "=",
+                    max: "="
+                },
+                
+                link:link,
+                templateUrl: "js/app/directives/slider/sliderDirective.html"
+            };
             
-            /* 
-                Define the internal scope of the slider 
-            */
-            scope: {
-                id: "@",
-                opts: "=",
-                min: "=",
-                max: "="
-            },
+            return directive;
             
-            /*
-                The value slider is defined as: $scope.lumRangeValue = "-1;1";
-            */
-            link: function (scope, element, attrs) {
+            function link(scope, element, attrs){
                 scope.internalRangeValue=  "-10;10";
                 
                 // setup watch events on min/max values form outside and 
@@ -54,8 +54,6 @@ angular.module('nasa').directive(
                 });
                 
                 buildSliderValueFromMinMax();
-             },
-            
-            templateUrl: "js/app/directives/slider/sliderDirective.html"
-    };
-});
+            }
+        }
+})();

@@ -1,6 +1,10 @@
 var gulp = require('gulp');
 var mainBowerFiles = require('main-bower-files');
 var server = require('gulp-server-livereload');
+var jshint = require('gulp-jshint');
+
+var packageJSON  = require('./package');
+var jshintConfig = packageJSON.jshintConfig;
 
 gulp.task("scripts", function (params) {
 	return gulp.src(mainBowerFiles(), { base: './bower_components' })
@@ -34,6 +38,13 @@ gulp.task('serve', function() {
       directoryListing: false,
       open: true
     }));
+});
+
+gulp.task("lint", function(){
+   return gulp.src('./js/app/**/*.js')
+    .pipe(jshint(jshintConfig))
+    .pipe(jshint.reporter('jshint-stylish', { verbose: true }))
+    .pipe(jshint.reporter('fail'));
 });
 
 gulp.task('default', ['scripts', 'content']);
