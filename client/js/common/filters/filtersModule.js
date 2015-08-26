@@ -1,1 +1,5 @@
-angular.module("ngcFilters",[]);
+(function () {
+	"use strict";
+
+	angular.module("ngcFilters", []);
+})();

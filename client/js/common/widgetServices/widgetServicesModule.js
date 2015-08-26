@@ -1,1 +1,5 @@
-angular.module("ngcWidgetServices",[]);
+(function(){
+	"use strict";
+	
+	angular.module("ngcWidgetServices",[]);
+})();
