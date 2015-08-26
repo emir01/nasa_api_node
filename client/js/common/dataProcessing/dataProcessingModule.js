@@ -1,2 +1,7 @@
-angular.module("ngcDataProcessing", []);
-	   
+(function(){
+	"use strict";
+	
+	angular
+		.module("ngcDataProcessing", []);
+})();
+

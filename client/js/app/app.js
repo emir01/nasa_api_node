@@ -1,4 +1,7 @@
-angular
+(function(){
+	"use strict";
+	
+	angular
 	.module("nasa", 
 		[
 			"ngRoute",
@@ -11,3 +14,4 @@ angular
 			"ngcWidgetServices"
 		]
 	);
+})();

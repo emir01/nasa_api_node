@@ -41,7 +41,7 @@ gulp.task('serve', function() {
 });
 
 gulp.task("lint", function(){
-   return gulp.src('./js/app/**/*.js')
+   return gulp.src(['./js/app/**/*.js','./js/app/*.js'])
     .pipe(jshint(jshintConfig))
     .pipe(jshint.reporter('jshint-stylish', { verbose: true }))
     .pipe(jshint.reporter('fail'));
