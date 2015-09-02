@@ -3,7 +3,7 @@
 
     angular
         .module("nasa")
-        .directive("valueSliderRange", valueSliderRange);
+        .directive("nsSliderComponent", valueSliderRange);
 
     function valueSliderRange() {
         var directive = {
@@ -15,7 +15,7 @@
             },
 
             link: link,
-            templateUrl: "js/app/directives/slider/sliderDirective.html"
+            templateUrl: "js/app/components/slider-filter.directive.html"
         };
 
         return directive;

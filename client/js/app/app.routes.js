@@ -4,13 +4,15 @@
      angular
         .module("nasa")   
         .config(config);
+        
+    config.$inject = ["$routeProvider"];
      
     function config ($routeProvider) {
         $routeProvider
             .when('/', {
-                controller: "StarsController",
+                controller: "StarsSearchController",
                 controllerAs: 'vm',
-                templateUrl: 'js/app/views/stars.html',
+                templateUrl: 'js/app/stars/starsSearch.html',
             })
             .otherwise({ redirectTo: '/' });
     }

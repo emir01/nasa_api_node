@@ -2,11 +2,11 @@
 	"use strict";
 
 	angular.module("nasa")
-		.controller("StarsController", StarsController);
+		.controller("StarsSearchController", StarsSearchController);
 
-	StarsController.$inject = ["$log", "starsDataService", "ngcDataProcessingArrays", "rangeSliderWidgetService"];
+	StarsSearchController.$inject = ["$log", "starsDataService", "ngcDataProcessingArrays", "rangeSliderWidgetService"];
 
-    function StarsController($log, starsDataService, ngcDataProcessingArrays, rangeSliderWidgetService) {
+    function StarsSearchController($log, starsDataService, ngcDataProcessingArrays, rangeSliderWidgetService) {
 		var vm = this;
 
 		vm.stars = [];
